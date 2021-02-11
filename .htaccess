@@ -1,0 +1,33 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+#Products
+RewriteRule ^product/([0-9]+)?$ adm/product-info.php?prod_info=$1
+RewriteRule add_product?$ adm/add_product.php
+RewriteRule products?$ adm/produktet.php
+
+#Home
+RewriteRule home?$ adm/index.php
+RewriteRule success_user?$ adm/success.php
+RewriteRule delete_element?$ adm/delete_element.php
+RewriteRule update_element?$ adm/update_element.php
+
+#Brand
+RewriteRule brands?$ adm/brands.php
+RewriteRule new_br?$ adm/create_brand.php
+
+#Orders
+RewriteRule new_order?$ adm/create_order.php
+RewriteRule orders?$ adm/orders.php
+RewriteRule ^order_info/([0-9]+)?$ adm/order_info.php?order_id=$1
+
+#Users
+RewriteRule register?$ adm/register.php
+RewriteRule users?$ adm/users.php
+
+
+
+RewriteCond %{QUERY_STRING} ^$
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]

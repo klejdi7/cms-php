@@ -17,23 +17,6 @@ class UserSet extends Dbh {
     $role = $_POST['role'];
     $account_id = rand(111111, 99999);
 
-    // $sql = "SELECT COUNT(username) AS num FROM users WHERE username = :username";
-    //
-    // $stmt = $this->connect()->prepare($sql);
-    //
-    // $stmt->bindValue(':username', $this->username );
-    //
-    // //Execute.
-    // $stmt->execute();
-    //
-    // //Fetch the row.
-    // $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    //
-    //  if($row['num'] > 0){
-    //   $_SESSION['error'] = '<div class="info-alert">Perdoruesi me kete username eshte regjistruar me pare!</div>';
-    // }
-    // else{
-
     $passwordHash = password_hash($this->password, PASSWORD_BCRYPT, array("cost" => 12));
 
     $sql = "INSERT INTO users (user_id, username ,password, name, role, created_at)" . "VALUES (:account_id ,:username, :password, :name,:role, CURRENT_TIMESTAMP)";
